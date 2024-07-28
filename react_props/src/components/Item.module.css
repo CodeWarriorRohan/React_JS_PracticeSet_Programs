@@ -1,8 +1,12 @@
 .item{
-    background-color: blueviolet;
+    background-color: rgb(228, 211, 246);
 }
 
 .span {
     font-weight: 600;
-    color: chartreuse;
+    color: rgb(22, 29, 16);
+}
+
+.button{
+    float: right;
 }
