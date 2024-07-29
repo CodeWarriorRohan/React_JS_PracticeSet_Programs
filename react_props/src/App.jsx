@@ -11,12 +11,28 @@ function App() {
 
    let foodItems = ["Fruits", "Green Vegetables", "Salad", "Rice", "Pulse", "Milk"];
 
+  //  let textStateArr = useState("Food Item Entered By User");
+  //  let textToShow = textStateArr[0];
+  //  let setTextState = textStateArr[1];
+  //  console.log(`Current value of textState:${textToShow}`);
+
+  //  OR
+
+   let [textToShow, setTextState] = useState("Food Item Entered By User");
+
+
+   const handleOnChange = (event) =>{
+   console.log(event.target.value);
+   setTextState(event.target.value);
+   }
+
   return (
     <>
     <Container>
       <div>
         <h1 className="food-heading">Healthy Foods</h1>
-        <FoodInput></FoodInput>
+        <FoodInput handleOnChange={handleOnChange}></FoodInput>
+        <p>{textToShow}</p>
         <FoodItems items={foodItems}></FoodItems>
         
         <ErrorMsg items={foodItems}></ErrorMsg>
