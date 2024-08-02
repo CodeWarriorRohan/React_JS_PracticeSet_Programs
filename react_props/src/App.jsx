@@ -9,7 +9,7 @@ function App() {
 
  // let foodItems = [];
 
-   let foodItems = ["Fruits", "Green Vegetables", "Salad", "Rice", "Pulse", "Milk"];
+  // let foodItems = ["Fruits", "Green Vegetables", "Salad", "Rice", "Pulse"];
 
   //  let textStateArr = useState("Food Item Entered By User");
   //  let textToShow = textStateArr[0];
@@ -18,21 +18,26 @@ function App() {
 
   //  OR
 
-   let [textToShow, setTextState] = useState("Food Item Entered By User");
+  // let [textToShow, setTextState] = useState();
+
+   let [foodItems, setFoodItems] = useState([]);
 
 
-   const handleOnChange = (event) =>{
-   console.log(event.target.value);
-   setTextState(event.target.value);
-   }
+   const onKeyDown = (event) =>{
+    if(event.key === "Enter"){
+      let newFoodItem = event.target.value;
+      let newItems = [...foodItems, newFoodItem];
+      setFoodItems(newItems);
+    }
+   };
 
   return (
     <>
     <Container>
       <div>
         <h1 className="food-heading">Healthy Foods</h1>
-        <FoodInput handleOnChange={handleOnChange}></FoodInput>
-        <p>{textToShow}</p>
+        <FoodInput handleKeyDown={onKeyDown}></FoodInput>
+        
         <FoodItems items={foodItems}></FoodItems>
         
         <ErrorMsg items={foodItems}></ErrorMsg>
